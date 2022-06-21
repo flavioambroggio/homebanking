@@ -19,7 +19,7 @@ const prueba = Vue.createApp({
     },
     
     created() {
-        axios.get("http://localhost:8080/api/clients")
+        axios.get("/api/clients")
             .then(datos => {
                 this.clients = datos.data
                 this.json = datos

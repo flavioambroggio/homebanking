@@ -97,7 +97,7 @@ Vue.createApp({
 
 
         cargardatosiniciales() {
-            axios.get("http://localhost:8080/api/clients/current")
+            axios.get("/api/clients/current")
                 .then(datos => {
                     this.clients = datos.data
                     this.cards = datos.data.cards.sort((x, y) => x.id - y.id)
@@ -115,7 +115,7 @@ Vue.createApp({
         },
 
         cargardatos() {
-            axios.get("http://localhost:8080/api/clients/current")
+            axios.get("/api/clients/current")
                 .then(datos => {
                     this.clients = datos.data
                     this.cards = datos.data.cards.sort((x, y) => x.id - y.id)

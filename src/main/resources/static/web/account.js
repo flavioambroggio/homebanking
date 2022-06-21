@@ -22,7 +22,7 @@ Vue.createApp({
         const urlParams = new URLSearchParams(window.location.search);
         const myParam = urlParams.get('id');
 
-        this.url = `http://localhost:8080/api/accounts/${myParam}`
+        this.url = `/api/accounts/${myParam}`
 
         axios.get(this.url)
             .then(datos => {
@@ -30,7 +30,7 @@ Vue.createApp({
                 this.account = datos.data
             })
 
-        axios.get("http://localhost:8080/api/clients/current")
+        axios.get("/api/clients/current")
         .then(datos => {
             this.clients = datos.data})
 
@@ -51,7 +51,7 @@ Vue.createApp({
                 if (result.isConfirmed) {
                     const urlParams = new URLSearchParams(window.location.search);
                     const myParam = urlParams.get('id');
-                    axios.post(`http://localhost:8080/api/pdf/${myParam}`, `desde=${this.desde}&hasta=${this.hasta}`)
+                    axios.post(`/api/pdf/${myParam}`, `desde=${this.desde}&hasta=${this.hasta}`)
                         .then(() => {
                             Swal.fire(
                                 'pdf descargado!',

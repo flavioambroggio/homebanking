@@ -17,7 +17,7 @@ Vue.createApp({
     },
 
     created() {
-        axios.get("http://localhost:8080/api/clients/current")
+        axios.get("/api/clients/current")
             .then(datos => {
                 this.clients = datos.data
                 this.accounts = datos.data.accounts.sort((x, y) => x.id - y.id)
