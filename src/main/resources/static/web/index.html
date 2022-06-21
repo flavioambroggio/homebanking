@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+    integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <link rel="stylesheet" href="style_index.css">
+    <title>Index</title>
+</head>
+
+<body>
+
+    <a href="https://wa.me/+5401143171701" target="_blank" data-bs-toggle="tooltip" data-bs-placement="left"
+        title="Comunicate con nosotros" class="btn-wsp">
+        <img class="icon-wsp" src="./assets/whatsapp.png" alt="wsp">
+    </a>
+
+    <main>
+
+        <div id="app" class="container-fluid d-flex flex-column justify-content-between h-100">
+
+            <div class="d-flex w-100 justify-content-between mb-2">
+
+                <div class="d-flex flex-wrap justify-content-center align-items-center p-1">
+                    <div id="divLogo">
+                        <img id="logo" src="./assets/piggy.png" alt="logo">
+                    </div>
+                    <h1 id="titulo" class="text-white animate__animated animate__rubberBand">PIGGY BANK</h1>
+                </div>
+                <div class="d-flex">
+                    <button type="button" class="botones" data-bs-toggle="modal" data-bs-target="#exampleModal">Iniciar Sesión</button>            
+                    <button type="button" class="botones" data-bs-toggle="modal" data-bs-target="#exampleModal2">Registrate</button>
+                </div>
+            </div>
+
+            <div class="d-flex flex-wrap justify-content-around">
+                <div class="d-flex">
+                    <a href="">
+                        <h5 class="text-white fw-bold letrero"><i class="fa-solid fa-bullhorn"></i> Conocé nuestras promos</h5>
+                    </a>
+                </div>
+                <div>
+                    <a href="" data-bs-toggle="modal" data-bs-target="#exampleModal2">
+                        <h5 class="text-white fw-bold letrero"><i class="fa-brands fa-cc-mastercard"></i> Tarjetas Piggy</h5>
+                    </a>
+                </div>
+                <div>
+                    <a href="" data-bs-toggle="modal" data-bs-target="#exampleModal2">
+                        <h5 class="text-white fw-bold letrero"><i class="fa-solid fa-sack-dollar"></i> Elegí tu prestamo</h5>
+                    </a>
+                </div>
+                <div>
+                    <a href="" data-bs-toggle="modal" data-bs-target="#exampleModal2">
+                        <h5 class="text-white fw-bold letrero"><i class="fa-solid fa-hand-holding-dollar"></i> Invertí con nosotros</h5>
+                    </a>
+                </div>
+            </div>
+
+            <div id="contenedorIndex" class="container d-flex flex-wrap justify-content-between">
+                
+                <div class="card">
+                    <img src="./assets/auto.jpg" alt="" class="card-img-top imgIndex border-bottom border-dark border-1">
+                    <div class="card-body bg-secondary">
+                        <h5 class="fw-bold text-center card-text"><i class="fa-solid fa-car"></i> Autos 0km</h5>                    
+                        <p class="card-text"><b><i>Monto: </i></b>hasta $3.000.000</p>  
+                        <p class="card-text"><b><i>Plazo: </i></b>36, 48 y 60 cuotas</p>                    
+                        <p class="card-text"><b><i>Tasa: </i></b>TNA pesos 43%</p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <img src="./assets/pileta.png" alt="" class="card-img-top imgIndex border-bottom border-dark border-1">
+                    <div class="card-body bg-secondary">
+                        <h5 class="fw-bold text-center"><i class="fa-solid fa-person-swimming"></i> Lleva tu pileta</h5>
+                        <p class="card-text"><b><i>Monto: </i></b>hasta $3.000.000</p>                   
+                        <p class="card-text"><b><i>Tasa: </i></b>TNA del 37%</p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <img src="./assets/viajes2.jpg" alt="" class="card-img-top imgIndex border-bottom border-dark border-1">
+                    <div class="card-body bg-secondary">
+                        <h5 class="fw-bold text-center card-text"><i class="fa-solid fa-plane-departure"></i> Viajá DE UNA</h5>                    
+                        <p class="card-text"><b><i>Monto: </i></b>hasta $1.000.000</p>                 
+                        <p class="card-text"><b><i>Tasa: </i></b>TNA del 47%</p>
+                    </div>
+                </div>
+
+            </div>
+
+            <div id="infoo" class="w-100 text-center">
+                <p>
+                    <button id="info" class="btn text-white" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                        Mas información
+                    </button>
+                </p>
+                <div class="collapse" id="collapseExample">
+                    <div class="row text-white p-2">
+                        <div class="d-flex flex-column col-4">
+                            <span><a href="" class="masInfo">- Personas</a></span>
+                            <span><a href="" class="masInfo">- Empresas</a></span>
+
+                        </div>
+                        <div class="d-flex flex-column col-4">
+                            <span><a href="" class="masInfo">- Negocios y Profesionales</a></span>
+                            <span><a href="" class="masInfo" data-bs-toggle="modal" data-bs-target="#exampleModal3">- Sucursales y cajeros</a></span>
+                        </div>
+                        <div class="d-flex flex-column col-4">
+                            <span><a href="" class="masInfo">- Insitucional</a></span>
+                            <span><a href="mailto:piggybank@tubank.org" class="masInfo">- Contacto</a></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- Modal1 -->
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content bg-secondary">
+                        <div class="modal-header">
+                            <h5 class="modal-title text-white" id="exampleModalLabel"><i class="fa-solid fa-piggy-bank"></i> Iniciar Sesión</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                        <form v-on:submit.prevent="signIn">
+                            <div class="mb-3">
+                                <input type="email" class="input" placeholder="Email" v-model="email" required>
+                            </div>
+                            <div class="mb-3 d-flex align-items-center">
+                                <input id="contraseña" type="password" class="input" placeholder="Contraseña" v-model="password" required>
+                                <a id="ocultar" @click="ocultar"><i class="fa-solid fa-eye"></i></i></a>
+                            </div>
+                            <div v-if="error1">
+                                <p class="text-center fw-bold text-danger"><i class="fa-solid fa-circle-exclamation"></i> Email o Contraseña incorrectos</p>
+                            </div>
+                            <div>
+                                <button type="submit" class="btn btn-dark"><i class="fa-solid fa-arrow-right-to-bracket"></i> Sign in</button>
+                            </div>                            
+                        </form>
+                        </div>
+                    </div>
+                </div>
+            </div>            
+
+            <!-- Modal2 -->
+            <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content bg-secondary">
+                        <div class="modal-header">
+                            <h5 class="modal-title text-white" id="exampleModalLabel"><i class="fa-solid fa-piggy-bank"></i> Registrate</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <form v-on:submit.prevent="signUp">
+                                <div class="mb-3">
+                                    <input type="text" class="input" placeholder="Nombre" v-model="nombre" required>
+                                </div>
+                                <div class="mb-3">
+                                    <input type="text" class="input" placeholder="Apellido" v-model="apellido" required>
+                                </div>
+                                <div class="mb-3">
+                                    <input type="email" class="input" placeholder="Email" v-model="correo" required>
+                                </div>
+                                <div class="mb-3">
+                                    <input type="password" class="input" placeholder="Contraseña" v-model="contraseña" required>
+                                </div>
+                                <div v-if="error2">
+                                    <p class="text-center fw-bold text-danger"><i class="fa-solid fa-circle-exclamation"></i> Email ya registrado</p>
+                                </div>
+                                <div>
+                                    <button type="submit" class="btn btn-dark"><i class="fa-solid fa-arrow-right-to-bracket"></i> Sign up</button>
+                                </div>
+                            </form>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+
+            <!-- Modal3 -->
+            <div class="modal fade" id="exampleModal3" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content bg-secondary">
+                        <div class="modal-header">
+                            <h5 class="modal-title text-white" id="exampleModalLabel"><i class="fa-solid fa-piggy-bank"></i> Sucursales y cajeros</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <iframe id="mapa" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d53887.96681431843!2d-63.23921980000001!3d-32.419213649999996!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95cc42fb51306dc1%3A0xbfb3fffbd425c6b1!2zVmlsbGEgTWFyw61hLCBDw7NyZG9iYQ!5e0!3m2!1ses-419!2sar!4v1653654889339!5m2!1ses-419!2sar" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        </div>                        
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+    
+    <footer>
+        <div class="d-flex justify-content-evenly align-items-center border-top border-bottom border-light border-3 bg-dark">
+            <div class="d-flex justify-content-center align-items-center">
+                <span id="anuncio" class="fs-5"><i class="fa-regular fa-newspaper"></i> Enterate todas las novedades en nuestras redes sociales</span>
+            </div>
+            <div class="d-flex justify-content-center align-items-center">
+                <a href="https://www.instagram.com/banconacion/?hl=es" target="_blanck" class="redesS">
+                    <img class="redes" src="./assets/Instagram.png" alt="">
+                    <span class="fw-bold fst-italic nombreRed">Instagram</span>
+                </a>
+            </div>
+            <div class="d-flex justify-content-center align-items-center">
+                <a href="https://es-la.facebook.com/banconacion/" target="_blanck" class="redesS">
+                    <img class="redes" src="./assets/Facebook1.png" alt="">
+                    <span class="fw-bold fst-italic nombreRed">Facebook</span>
+                </a>
+            </div>
+            <div class="d-flex justify-content-center align-items-center">
+                <a href="https://twitter.com/BancoNacion" target="_blanck" class="redesS">
+                    <img class="redes" src="./assets/Twitter.png" alt="">
+                    <span class="fw-bold fst-italic nombreRed">Twitter</span>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/js/all.min.js"
+        integrity="sha512-6PM0qYu5KExuNcKt5bURAoT6KCThUmHRewN3zUFNaoI6Di7XJPTMoT6K0nsagZKk2OB4L7E3q1uQKHNHd4stIQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://unpkg.com/vue@3"></script>
+    <script src="./index.js"></script>
+</body>
+
+</html>
