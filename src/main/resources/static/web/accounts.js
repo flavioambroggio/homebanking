@@ -52,8 +52,7 @@ Vue.createApp({
                             resolve()
                         }
                         if (value === 'CORRIENTE') {
-                            this.accountType = "CORRIENTE"   
-                            // probar cambiar a value
+                            this.accountType = "CORRIENTE"
                             resolve()
                         }
                     })
@@ -110,14 +109,6 @@ Vue.createApp({
                 }
             })
         },
-
-        // eliminar(id) {
-        //     axios.patch(`/api/clients/current/accounts/${id}`)
-        //         .then(response => location.reload())
-        //         .catch(error => {
-        //             console.log(error);
-        //         });
-        // },
 
     }
 
