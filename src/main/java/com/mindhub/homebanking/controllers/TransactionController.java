@@ -8,6 +8,7 @@ import com.mindhub.homebanking.models.Transaction;
 import com.mindhub.homebanking.services.AccountService;
 import com.mindhub.homebanking.services.ClientService;
 import com.mindhub.homebanking.services.TransactionService;
+import com.mindhub.homebanking.services.implement.PDFGeneratorServiceImplement;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
@@ -21,11 +22,16 @@ import com.lowagie.text.pdf.PdfPTable;
 import com.lowagie.text.pdf.PdfWriter;
 
 
+import javax.servlet.http.HttpServletResponse;
 import java.awt.*;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.IOException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -99,78 +105,35 @@ public class TransactionController {
 
     }
 
+    private final PDFGeneratorServiceImplement pdfGeneratorService;
+    public TransactionController (PDFGeneratorServiceImplement pdfGeneratorService) {
+        this.pdfGeneratorService = pdfGeneratorService;
+    }
+
     @PostMapping("/pdf/{id}")
-    public ResponseEntity<Object> createPdf(@PathVariable Long id, @RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate desde,
-                                            @RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate hasta) throws FileNotFoundException, DocumentException {
+    public ResponseEntity<Object> createPdf(HttpServletResponse response, @PathVariable Long id, @RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate desde,
+                                            @RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate hasta, Authentication authentication) throws IOException, DocumentException {
 
+        Client client = clientService.getClientCurrent(authentication);
         Account account = accountService.getAccountById(id);
-        if(account ==  null) {
-            return new ResponseEntity<>("Nonexistent account", HttpStatus.FORBIDDEN);
+        if(account == null){
+            return new ResponseEntity<>("la cuenta no existe",HttpStatus.FORBIDDEN);
         }
 
-        Client client = account.getClient();
-        if(!client.getAccount().contains(account)) {
-            return new ResponseEntity<>("The account does not belong to you", HttpStatus.FORBIDDEN);
+        if(!client.getAccount().contains(account)){
+            return new ResponseEntity<>("la cuenta no pertenece al cliente",HttpStatus.FORBIDDEN);
         }
 
-        Set<Transaction> transactions = account.getTransactions();
-        Set<Transaction> transactionsSet = transactions.stream().filter(transaction -> transaction.getDate().toLocalDate().isBefore(hasta.plusDays(1))).collect(Collectors.toSet());
-        Set<Transaction> transactionsSet2 = transactionsSet.stream().filter(transaction -> transaction.getDate().toLocalDate().isAfter(desde.plusDays(-1))).collect(Collectors.toSet());
+        response.setContentType("application/pdf");
+        DateFormat dateFormatter = new SimpleDateFormat("yyyy-MM-dd:hh:mm:ss");
+        String currentDateTime = dateFormatter.format(new Date());
 
-        if(transactionsSet2.size() == 0) {
-            return new ResponseEntity<>("No transactions found", HttpStatus.FORBIDDEN);
-        }
+        String headerKey = "Content-Disposition";
+        String headerValue = "attachment; filename=pdf_" + currentDateTime + ".pdf";
+        response.setHeader(headerKey, headerValue);
 
-        Document document = new Document();
-        String ruta = System.getProperty("user.home");
-        PdfWriter.getInstance(document, new FileOutputStream(ruta + "/Desktop/Transactions-" + account.getNumber() +".pdf"));
 
-        document.open();
-
-        Paragraph tituloP = new Paragraph("PIGGY BANK");
-        tituloP.setSpacingAfter(10);
-        document.add(tituloP);
-
-        Paragraph titulo = new Paragraph("Transactions"+ " " + account.getNumber() + " " + client.getFirstName() + " " + client.getLastName());
-        titulo.setSpacingAfter(10);
-        titulo.setAlignment(Element.ALIGN_CENTER);
-        document.add(titulo);
-
-        PdfPTable table = new PdfPTable(5);
-        table.setWidthPercentage(100);
-        table.getDefaultCell().setHorizontalAlignment(Element.ALIGN_CENTER);
-        PdfPCell h1 = new PdfPCell(new Phrase("Tipo"));
-        h1.setBackgroundColor(new Color(194, 117, 255));
-        table.addCell(h1);
-        PdfPCell h2 = new PdfPCell(new Phrase("Monto"));
-        h2.setBackgroundColor(new Color(194, 117, 255));
-        table.addCell(h2);
-        PdfPCell h3 = new PdfPCell(new Phrase("Descripcion"));
-        h3.setBackgroundColor(new Color(194, 117, 255));
-        table.addCell(h3);
-        PdfPCell h4 = new PdfPCell(new Phrase("Fecha"));
-        h4.setBackgroundColor(new Color(194, 117, 255));
-        table.addCell(h4);
-        PdfPCell h5 = new PdfPCell(new Phrase("Fecha"));
-        h5.setBackgroundColor(new Color(194, 117, 255));
-        table.addCell(h5);
-
-        transactionsSet2.forEach(transaction -> {
-            PdfPCell c1 = new PdfPCell(new Phrase(transaction.getType() + ""));
-            PdfPCell c2 = new PdfPCell(new Phrase(transaction.getAmount() + ""));
-            PdfPCell c3 = new PdfPCell(new Phrase(transaction.getDescription()));
-            PdfPCell c4 = new PdfPCell(new Phrase(transaction.getDate().toLocalDate() + ""));
-            PdfPCell c5 = new PdfPCell(new Phrase(transaction.getBalance() + ""));
-            table.addCell(c1);
-            table.addCell(c2);
-            table.addCell(c3);
-            table.addCell(c4);
-            table.addCell(c5);
-        });
-
-        document.add(table);
-
-        document.close();
+        this.pdfGeneratorService.export(response,id,desde,hasta);
 
         return new ResponseEntity<>("PDF created" , HttpStatus.CREATED);
     }
