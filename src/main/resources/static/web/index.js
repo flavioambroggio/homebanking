@@ -10,50 +10,67 @@ Vue.createApp({
             correo: "",
             contraseña: "",
             error1: false,
-            error2: false            
+            error2: false
         }
     },
 
-    created(){
-        
+    created() {
+
+    },
+
+    mounted() {
+
+        $('.message a').click(function () {
+            $('form').animate({ height: "toggle", opacity: "toggle" }, "slow");
+        });
+
     },
 
     methods: {
 
         signIn() {
-            
-            axios.post(`/api/login`,`email=${this.email}&password=${this.password}`,{headers:{'content-type':'application/x-www-form-urlencoded'}})
-                .then(response => this.email=="admin@admin.com" ? window.location.href = "../manager.html" : window.location.href = "./accounts.html")
+
+            axios.post(`/api/login`, `email=${this.email}&password=${this.password}`, { headers: { 'content-type': 'application/x-www-form-urlencoded' } })
+                .then(response => this.email == "admin@admin.com" ? window.location.href = "../manager.html" : window.location.href = "./accounts.html")
                 .catch(error => {
-                    if(error.response.status == 401){
-                        this.error1 = true;
-                    }
+                    Swal.fire({
+                        position: 'top-end',
+                        icon: 'error',
+                        title: "Contraseña o Email Incorrectos",
+                        toast: true,
+                        showConfirmButton: false,
+                        timer: 1500
+                    })
                 });
-                
+
 
         },
 
         signUp() {
 
-            axios.post(`/api/clients`,`firstName=${this.nombre}&lastName=${this.apellido}&email=${this.correo}&password=${this.contraseña}`,{headers:{'content-type':'application/x-www-form-urlencoded'}})
+            axios.post(`/api/clients`, `firstName=${this.nombre}&lastName=${this.apellido}&email=${this.correo}&password=${this.contraseña}`, { headers: { 'content-type': 'application/x-www-form-urlencoded' } })
                 .then(response => {
-                    this.email=this.correo
-                    this.password=this.contraseña
+                    this.email = this.correo
+                    this.password = this.contraseña
                     this.signIn()
                 })
                 .catch(error => {
-                    console.log(error.response.data)
-                    if(error.response.data == "Name already in use"){
-                        this.error2 = true;
-                    }
+                    Swal.fire({
+                        position: 'top-end',
+                        icon: 'error',
+                        title: error.response.data,
+                        toast: true,
+                        showConfirmButton: false,
+                        timer: 1500
+                    })
                 });
         },
 
-        ocultar(){
+        ocultar() {
             var tipo = document.getElementById("contraseña")
-            if(tipo.type == "password"){
+            if (tipo.type == "password") {
                 tipo.type = "text"
-            }else{
+            } else {
                 tipo.type = "password"
             }
         }
