@@ -339,18 +339,19 @@ footer {
     position: absolute;
     top: 80vh;
     left: 45vw;
-    width: 10px;
-    height: 10px;
-    border: solid 1px #f7b8ff;
+    width: 20px;
+    height: 20px;
+    color: white;
+    /* border: solid 1px #f7b8ff; */
     transform-origin: top left;
     transform: scale(0) rotate(0deg) translate(-50%, -50%);
-    -webkit-animation: cube 8s ease-in forwards infinite;
-    animation: cube 8s ease-in forwards infinite;
+    -webkit-animation: cube 12s ease-in forwards infinite;
+    animation: cube 12s ease-in forwards infinite;
 }
 
-.cube:nth-child(2n) {
+/* .cube:nth-child(2n) {
     border-color: #ff22ff;
-}
+} */
 
 .cube:nth-child(2) {
     -webkit-animation-delay: 2s;
