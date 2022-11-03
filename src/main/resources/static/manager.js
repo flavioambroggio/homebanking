@@ -34,7 +34,7 @@ const prueba = Vue.createApp({
 
             if(this.nombre != "" && this.apellido != "" && this.correo != "" && this.contraseña != "" && this.correo.includes("@" && ".com")) {
 
-                axios.post(`/api/createClient`,`firstName=${this.nombre}&lastName=${this.apellido}&email=${this.correo}&password=${this.contraseña}`,{headers:{'content-type':'application/x-www-form-urlencoded'}})
+                axios.post(`/api/createClient`,`firstName=${this.nombre}&lastName=${this.apellido}&email=${this.correo}&password=${this.contraseña}`)
                     .catch(error => {
                         console.log(error);
                     });

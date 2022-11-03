@@ -30,7 +30,7 @@ Vue.createApp({
 
         signIn() {
 
-            axios.post(`/api/login`, `email=${this.email}&password=${this.password}`, { headers: { 'content-type': 'application/x-www-form-urlencoded' } })
+            axios.post(`/api/login`, `email=${this.email}&password=${this.password}`)
                 .then(response => this.email == "admin@admin.com" ? window.location.href = "../manager.html" : window.location.href = "./accounts.html")
                 .catch(error => {
                     Swal.fire({
@@ -48,7 +48,7 @@ Vue.createApp({
 
         signUp() {
 
-            axios.post(`/api/clients`, `firstName=${this.nombre}&lastName=${this.apellido}&email=${this.correo}&password=${this.contraseña}`, { headers: { 'content-type': 'application/x-www-form-urlencoded' } })
+            axios.post(`/api/clients`, `firstName=${this.nombre}&lastName=${this.apellido}&email=${this.correo}&password=${this.contraseña}`)
                 .then(response => {
                     this.email = this.correo
                     this.password = this.contraseña

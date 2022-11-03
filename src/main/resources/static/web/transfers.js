@@ -51,7 +51,7 @@ Vue.createApp({
                 .then((willDelete) => {
                     if (willDelete) {
                         swal(
-                            axios.post(`/api/transactions`, `amount=${this.amount}&description=${this.description}&accountOrigin=${this.accountOrigin}&accountDestination=${this.accountDestination}`,{headers:{'content-type':'application/x-www-form-urlencoded'}})
+                            axios.post(`/api/transactions`, `amount=${this.amount}&description=${this.description}&accountOrigin=${this.accountOrigin}&accountDestination=${this.accountDestination}`)
                             .then(response => location.reload())
                             .catch(error => {
                                 console.log(error.response.data)

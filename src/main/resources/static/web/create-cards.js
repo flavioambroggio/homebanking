@@ -42,7 +42,7 @@ Vue.createApp({
                 .then((willDelete) => {
                     if (willDelete) {
                         swal(
-                            axios.post(`/api/clients/current/cards`, `type=${this.type}&color=${this.color}`, { headers: { 'content-type': 'application/x-www-form-urlencoded' } })
+                            axios.post(`/api/clients/current/cards`, `type=${this.type}&color=${this.color}`)
                             .then(response => window.location.href = "./cards.html")
                             .catch(error => {
                                 console.log(error.response.data)
